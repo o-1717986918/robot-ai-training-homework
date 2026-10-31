@@ -29,6 +29,8 @@ Windows 64 位；Python 3.13、pip；VS Code + Python 扩展或 PyCharm；Git �
 
 **学习资源：**[黑马程序员 Python](https://www.bilibili.com/video/BV1qW4y1a7fU/) 的变量、基本数据类型、输入输出、字符串、函数和判断；可选 [CS50P 第0讲](https://cs50.harvard.edu/python/0/)与[第1讲](https://cs50.harvard.edu/python/1/)。
 
+**中英字幕视频：**[哈佛大学 CS50 Python 编程全集（附课程课件）](https://www.bilibili.com/video/BV1fFyJBFE92/?p=2)。打开视频后，在选集中选择“函数与变量、条件判断”相关内容。
+
 **题目编号：**必做 [P01](../题库/01_Python基础与CS50P题.md#p01)、[P02](../题库/01_Python基础与CS50P题.md#p02)、[P03](../题库/01_Python基础与CS50P题.md#p03)、[P04](../题库/01_Python基础与CS50P题.md#p04)。点击编号查看集中题面、接口和验收要求。
 
 完成四题，分别提交 `faces/faces.py`、`tip/tip.py`、`bank/bank.py`、`meal/meal.py`。按题库保留函数接口、输入输出与边界处理。
