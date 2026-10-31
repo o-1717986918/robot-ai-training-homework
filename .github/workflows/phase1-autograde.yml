@@ -4,13 +4,6 @@ on:
   push:
     paths:
       - 'phase1/task0[1-4]/**'
-      - '.course/grading/**'
-      - '.github/workflows/phase1-autograde.yml'
-  pull_request:
-    paths:
-      - 'phase1/task0[1-4]/**'
-      - '.course/grading/**'
-      - '.github/workflows/phase1-autograde.yml'
   workflow_dispatch:
     inputs:
       task:
