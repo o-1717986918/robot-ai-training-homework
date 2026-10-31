@@ -1,0 +1,85 @@
+{
+  "upstream": "https://github.com/cs50/problems.git",
+  "branch": "2022/python",
+  "commit": "6a017b14a7b132a4feaf9eff582d3bd1ad897fc9",
+  "checker_python": "3.13",
+  "check50": "3.5.0",
+  "exercises": [
+    {
+      "task": 1,
+      "student_path": "phase1/task01/faces",
+      "checks_path": "faces"
+    },
+    {
+      "task": 1,
+      "student_path": "phase1/task01/tip",
+      "checks_path": "tip"
+    },
+    {
+      "task": 1,
+      "student_path": "phase1/task01/bank",
+      "checks_path": "bank"
+    },
+    {
+      "task": 1,
+      "student_path": "phase1/task01/meal",
+      "checks_path": "meal"
+    },
+    {
+      "task": 2,
+      "student_path": "phase1/task02/coke",
+      "checks_path": "coke"
+    },
+    {
+      "task": 2,
+      "student_path": "phase1/task02/twttr",
+      "checks_path": "twttr"
+    },
+    {
+      "task": 2,
+      "student_path": "phase1/task02/plates",
+      "checks_path": "plates"
+    },
+    {
+      "task": 2,
+      "student_path": "phase1/task02/nutrition",
+      "checks_path": "nutrition"
+    },
+    {
+      "task": 3,
+      "student_path": "phase1/task03/fuel",
+      "checks_path": "fuel"
+    },
+    {
+      "task": 3,
+      "student_path": "phase1/task03/grocery",
+      "checks_path": "grocery"
+    },
+    {
+      "task": 3,
+      "student_path": "phase1/task03/figlet",
+      "checks_path": "figlet"
+    },
+    {
+      "task": 3,
+      "student_path": "phase1/task03/adieu",
+      "checks_path": "adieu"
+    },
+    {
+      "task": 3,
+      "student_path": "phase1/task03/professor",
+      "checks_path": "professor"
+    },
+    {
+      "task": 4,
+      "student_path": "phase1/task04/seasons",
+      "checks_path": "seasons"
+    },
+    {
+      "task": 4,
+      "student_path": "phase1/task04/jar",
+      "checks_path": "jar"
+    }
+  ],
+  "curriculum_revision": "2026-10-29"
+}

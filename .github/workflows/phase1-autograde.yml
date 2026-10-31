@@ -1,0 +1,89 @@
+name: Phase1 automatic feedback
+
+on:
+  push:
+    paths:
+      - 'phase1/task0[1-4]/**'
+      - '.course/grading/**'
+      - '.github/workflows/phase1-autograde.yml'
+  pull_request:
+    paths:
+      - 'phase1/task0[1-4]/**'
+      - '.course/grading/**'
+      - '.github/workflows/phase1-autograde.yml'
+  workflow_dispatch:
+    inputs:
+      task:
+        type: choice
+        description: Assignment to check
+        required: true
+        default: all
+        options: [task01, task02, task03, task04, all]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: phase1-feedback-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  select:
+    runs-on: ubuntu-24.04
+    outputs:
+      tasks: ${{ steps.tasks.outputs.tasks }}
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - id: tasks
+        env:
+          REQUESTED_TASK: ${{ inputs.task || '' }}
+        run: python .course/grading/select_tasks.py --output "$GITHUB_OUTPUT"
+
+  grade:
+    needs: select
+    if: needs.select.outputs.tasks != '[]'
+    name: Check ${{ matrix.task }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        task: ${{ fromJSON(needs.select.outputs.tasks) }}
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@v7.1.0
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: .course/grading/requirements-checker.txt
+      - name: Install checker dependencies
+        run: python -m pip install -r .course/grading/requirements-checker.txt
+      - name: Load pinned official CS50P checks
+        uses: actions/checkout@v7.0.1
+        with:
+          repository: cs50/problems
+          ref: 6a017b14a7b132a4feaf9eff582d3bd1ad897fc9
+          path: .course/upstream
+          persist-credentials: false
+      - name: Run official checks and course checks
+        run: python .course/grading/grade_submission.py --checks-root .course/upstream --task ${{ matrix.task }} --output artifacts
+      - name: Show per-problem feedback
+        if: always()
+        run: python .course/grading/render_feedback.py --root artifacts --task ${{ matrix.task }}
+      - name: Preserve raw results and feedback
+        if: always()
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          name: phase1-feedback-${{ matrix.task }}
+          path: artifacts/
+          retention-days: 14

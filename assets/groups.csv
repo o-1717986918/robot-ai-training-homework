@@ -1,0 +1,6 @@
+image_id,relative_path,group
+p01,landscape.png,train
+p02,portrait.jpg,val
+p03,small.PNG,test
+p04,missing.png,train
+p01,portrait.jpg,test
