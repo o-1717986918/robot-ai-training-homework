@@ -49,8 +49,7 @@ def render(root,task,student_root):
         for check in checks:
             error=safe(check.get("error","")).replace("\r","").replace("\n","<br>")
             lines.append("| "+safe(check["name"])+" | "+("通过" if check["passed"] else "失败")+" | "+error+" |")
-    lines+=["","完整原始结果在本次运行的Artifacts中；修正代码后commit/push，同一个PR会更新。",
-            "评测基于实际提交代码。公开的仓库反馈不能替代培训方对固定提交版本的最终复核。",""]
+    lines+=["","完整原始结果在本次运行的 Artifacts 中；修正代码后提交并推送，新的检查结果会显示在 Actions 中。",""]
     return "\n".join(lines)
 
 
