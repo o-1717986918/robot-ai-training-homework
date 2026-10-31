@@ -39,13 +39,13 @@ CPU 路线：运行 `python -m pip install torch torchvision matplotlib`。NVIDI
 
 ### 提交内容与检查
 
-- 在培训方仓库的本任务分支提交 `phase2/task03/` 下的训练和预测程序、依赖、README、日志摘要及少量曲线、预测和错误样例。
+- 在个人 Fork 的本任务分支提交 `phase2/task03/` 下的训练和预测程序、依赖、README、日志摘要及少量曲线、预测和错误样例。
 - README 记录数据划分、随机种子、设备、训练和加载权重的命令、验证与测试结果，以及一次参数改动对比；数据和权重通过培训方可访问的链接提供并记录 SHA-256。
 - 在培训方仓库 PR 中填写训练环境与最终测试结果。
 
 ## 三、提交至作业仓库
 
-培训方仓库：[https://github.com/o-1717986918/robot-ai-training-homework](https://github.com/o-1717986918/robot-ai-training-homework)。培训方为每位学员开通该仓库的写入权限。本文的 `GITHUB_USERNAME` 是占位符：请在每条命令中替换为自己的 GitHub 用户名，例如 `student/robotlee/phase1-task01`。每位学员使用自己的分支；提交的 PR 保留在培训方仓库，**不合并到培训方 main**。其他有仓库访问权限的学员可能看到分支和 PR。
+培训方公开仓库：[https://github.com/o-1717986918/robot-ai-training-homework](https://github.com/o-1717986918/robot-ai-training-homework)。学员将仓库 Fork 到自己的 GitHub 账号，在自己的 Fork 中推送分支，再向培训方仓库创建 PR；无需培训方邀请或仓库写入权限。`GITHUB_USERNAME` 是占位符，请在下方所有命令和地址中替换为自己的 GitHub 用户名。仓库、Fork、分支及 PR 均公开。
 
 1. 打开Ubuntu 终端，在仓库目录从自己上一任务已推送的分支创建本任务分支：
 
@@ -68,6 +68,6 @@ git commit -m "Complete phase2-task03"
 git push -u origin student/GITHUB_USERNAME/phase2-task03
 ```
 
-3. 打开**培训方仓库**的 **Pull requests → New pull request**：选择 `base: main` 和 `compare: student/GITHUB_USERNAME/phase2-task03`，填写任务名称、运行方法与结果，点击 **Create pull request**。按任务要求运行项目，检查输出并在 PR 中记录实际结果。
+3. 打开**培训方仓库**的 **Pull requests → New pull request → compare across forks**：选择 `base repository: o-1717986918/robot-ai-training-homework`、`base: main`、`head repository: GITHUB_USERNAME/robot-ai-training-homework`、`compare: student/GITHUB_USERNAME/phase2-task03`，填写任务名称、运行方法与结果，点击 **Create pull request**。按任务要求运行项目，检查输出并在 PR 中记录实际结果。
 
 4. 保留 PR 和已推送分支，下一任务从本分支继续。将大量数据、模型或视频放在培训方可访问的存储位置，在 README 提供链接与 SHA-256；少量结果放任务目录的 `samples/`。不要提交密钥、虚拟环境和完整数据集。

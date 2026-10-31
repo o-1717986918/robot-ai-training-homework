@@ -48,7 +48,7 @@ SSH 本机练习：在 Ubuntu 执行 `sudo service ssh start`，再运行 `ssh l
 - 选择 WSL2、虚拟机或双系统安装 Ubuntu，认识 Linux 用户、终端、工作目录、绝对路径和相对路径。
 - 学习 `pwd`、`ls`、`cd`、`mkdir`、`cp`、`mv`、`rm`、`cat`、`chmod`，以及管道、进程、磁盘、`apt` 与 `rg` 搜索；练习 SSH 本机连接和 `tmux` 会话分离、恢复。
 - 学习 Conda 环境创建、激活和切换，区分系统 Python、Conda 解释器及各自安装的包；在编辑器选择 Linux 解释器并运行此前程序。
-- 学习在 Linux 克隆培训方仓库、认证、切换自己的任务分支并提交；第二阶段可使用 Agent 辅助，逐项验证运行结果。
+- 学习在 Linux 克隆自己的 Fork、认证、切换自己的任务分支并提交；第二阶段可使用 Agent 辅助，逐项验证运行结果。
 
 **学习资源：**[计算机教育中缺失的一课](https://missing.csail.mit.edu/) 的 Shell、工具、版本控制和调试章节；[WSL 中文开发环境教程](https://learn.microsoft.com/zh-cn/windows/wsl/setup/environment)。
 
@@ -74,27 +74,28 @@ SSH 本机练习：在 Ubuntu 执行 `sudo service ssh start`，再运行 `ssh l
 
 ### 提交内容与检查
 
-- 在培训方仓库的本任务分支提交 `phase2/task01/README.md` 和更新后的根目录 `ENVIRONMENT.md`，记录 Ubuntu 安装方式、两个 Conda 解释器路径、工具版本、命令与实际输出。
+- 在个人 Fork 的本任务分支提交 `phase2/task01/README.md` 和更新后的根目录 `ENVIRONMENT.md`，记录 Ubuntu 安装方式、两个 Conda 解释器路径、工具版本、命令与实际输出。
 - 报告覆盖基本文件操作、此前程序运行、SSH 本机连接、`rg` 搜索及 `tmux` 会话恢复；在培训方仓库 PR 中填写环境和操作结果。
 
 ## 三、提交至作业仓库
 
-培训方仓库：[https://github.com/o-1717986918/robot-ai-training-homework](https://github.com/o-1717986918/robot-ai-training-homework)。培训方为每位学员开通该仓库的写入权限。本文的 `GITHUB_USERNAME` 是占位符：请在每条命令中替换为自己的 GitHub 用户名，例如 `student/robotlee/phase1-task01`。每位学员使用自己的分支；提交的 PR 保留在培训方仓库，**不合并到培训方 main**。其他有仓库访问权限的学员可能看到分支和 PR。
+培训方公开仓库：[https://github.com/o-1717986918/robot-ai-training-homework](https://github.com/o-1717986918/robot-ai-training-homework)。学员将仓库 Fork 到自己的 GitHub 账号，在自己的 Fork 中推送分支，再向培训方仓库创建 PR；无需培训方邀请或仓库写入权限。`GITHUB_USERNAME` 是占位符，请在下方所有命令和地址中替换为自己的 GitHub 用户名。仓库、Fork、分支及 PR 均公开。
 
-1. 在 Ubuntu 终端首次克隆培训方仓库。下方地址为培训方仓库，将姓名、邮箱和 `GITHUB_USERNAME` 换成自己的：
+1. 在 Ubuntu 终端首次克隆自己的 GitHub Fork。将下面的 `GITHUB_USERNAME`、姓名和邮箱换成自己的：
 
 ```bash
 mkdir -p ~/robot-ai
 cd ~/robot-ai
-git clone https://github.com/o-1717986918/robot-ai-training-homework.git course
+git clone https://github.com/GITHUB_USERNAME/robot-ai-training-homework.git course
 cd ~/robot-ai/course
 git config user.name "你的姓名或代号"
 git config user.email "你的GitHub邮箱"
+git remote add upstream https://github.com/o-1717986918/robot-ai-training-homework.git
 git fetch origin
 git switch -c student/GITHUB_USERNAME/phase2-task01 origin/student/GITHUB_USERNAME/phase1-assessment
 ```
 
-若 `~/robot-ai/course` 已是该仓库，进入该目录后从 `git fetch origin` 开始。`origin/student/GITHUB_USERNAME/phase1-assessment` 是此前推送到培训方仓库的考核分支。HTTPS 要求密码时使用具备该仓库 Contents 读写权限的 [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)，不要把令牌写进命令或提交到仓库。
+若 `~/robot-ai/course` 已是个人 Fork，进入该目录后从 `git fetch origin` 开始。`origin/student/GITHUB_USERNAME/phase1-assessment` 是此前推送到个人 Fork 的考核分支。HTTPS 要求密码时使用具备自己 Fork 的 Contents 读写权限的 [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)，不要把令牌写进命令或提交到仓库。
 
 2. 完成本项内容，在仓库根目录执行，确认 `git status` 后推送：
 
@@ -106,6 +107,6 @@ git commit -m "Complete phase2-task01"
 git push -u origin student/GITHUB_USERNAME/phase2-task01
 ```
 
-3. 打开**培训方仓库**的 **Pull requests → New pull request**：选择 `base: main` 和 `compare: student/GITHUB_USERNAME/phase2-task01`，填写任务名称、运行方法与结果，点击 **Create pull request**。按任务要求运行项目，检查输出并在 PR 中记录实际结果。
+3. 打开**培训方仓库**的 **Pull requests → New pull request → compare across forks**：选择 `base repository: o-1717986918/robot-ai-training-homework`、`base: main`、`head repository: GITHUB_USERNAME/robot-ai-training-homework`、`compare: student/GITHUB_USERNAME/phase2-task01`，填写任务名称、运行方法与结果，点击 **Create pull request**。按任务要求运行项目，检查输出并在 PR 中记录实际结果。
 
 4. 保留 PR 和已推送分支，下一任务从本分支继续。将大量数据、模型或视频放在培训方可访问的存储位置，在 README 提供链接与 SHA-256；少量结果放任务目录的 `samples/`。不要提交密钥、虚拟环境和完整数据集。
